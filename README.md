@@ -25,38 +25,11 @@ A Mac menu bar app that responds to comments in Figma with Claude-powered design
 
 1. Download the latest `.dmg` from [Releases](https://github.com/madebysan/figma-ai-responder/releases)
 2. Open the DMG and drag **Figma AI Responder** to your Applications folder
+3. On first launch, macOS will ask for Keychain access — enter your Mac password and click **Always Allow**
 
-#### macOS security warning
-
-Because this app is not signed with an Apple Developer certificate, macOS will show a warning saying the app **"is damaged and can't be opened"** when you first try to launch it. The app is not actually damaged — this is macOS blocking software it can't verify.
-
-**To fix this, open Terminal and run:**
-
-```bash
-xattr -cr ~/Downloads/Figma\ AI\ Responder-2.0.0-arm64.dmg
-```
-
-> Replace the file path above if you saved the DMG somewhere other than Downloads, or if the version number is different.
-
-Then open the DMG again and drag the app to Applications.
-
-If you already moved the app to Applications and it still won't open, run:
-
-```bash
-xattr -cr /Applications/Figma\ AI\ Responder.app
-```
-
-**What does this command do?** It removes the "quarantine" flag that macOS adds to files downloaded from the internet. This is safe to run — it just tells macOS you trust the file.
-
-**Alternative method (no Terminal):**
-1. Try to open the app (it will show the warning)
-2. Open **System Settings → Privacy & Security**
-3. Scroll down — you should see a message about the blocked app
-4. Click **"Open Anyway"**
+The app is signed and notarized with Apple Developer ID, so it works out of the box with no security warnings.
 
 ### Option B: Build from source
-
-If you'd prefer to build the app yourself (no security warnings this way):
 
 ```bash
 git clone https://github.com/madebysan/figma-ai-responder.git
@@ -65,7 +38,7 @@ npm install
 npm run dist
 ```
 
-The DMG will appear in the `release/` folder. Since you built it locally, macOS won't block it.
+The DMG will appear in the `release/` folder.
 
 ---
 
@@ -117,9 +90,9 @@ npm run dist      # Build DMG
 
 ## Troubleshooting
 
-**"App is damaged and can't be opened"**
-- This is a macOS Gatekeeper warning, not actual damage — see [Installation](#macos-security-warning) above
-- Run `xattr -cr` on the DMG or app file, or use System Settings → Privacy & Security → Open Anyway
+**Keychain access prompt on first launch**
+- This is normal — the app stores API keys securely in macOS Keychain
+- Enter your Mac login password and click **Always Allow** so it doesn't ask again
 
 **No response to comments**
 - Is monitoring started? (green indicator in menu bar)
