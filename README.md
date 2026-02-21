@@ -8,6 +8,7 @@
 in Figma comments using Claude's vision API.</p>
 
 <p align="center">macOS · Electron · Node.js</p>
+<p align="center"><a href="https://github.com/madebysan/mac-figma-ai-responder-app/releases/latest"><strong>Download Figma AI Responder</strong></a></p>
 
 ## What It Does
 
